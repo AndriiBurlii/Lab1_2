@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+    id 'jacoco'
+}
+
+group = 'ua.nubip.aburlii'
+version = '1.2-KPI'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.0'
+    testImplementation 'org.mockito:mockito-core:5.11.0'
+    testImplementation 'com.github.tomakehurst:wiremock-jre8-standalone:3.9.1'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+jacocoTestReport {
+    dependsOn test
+    reports {
+        html.required = true
+        xml.required = true
+    }
+}
